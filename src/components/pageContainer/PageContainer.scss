@@ -1,0 +1,9 @@
+.page-container {
+  margin-left: 55px;
+  padding: 0 15px;
+  transition: 0.3s ease all;
+
+  &--side-bar-opened {
+    margin-left: 250px;
+  }
+}

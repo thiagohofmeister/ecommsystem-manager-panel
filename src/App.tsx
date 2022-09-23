@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Suspense } from 'react'
+import { QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
+import { Provider } from 'react-redux'
+import { RouteObject, useRoutes } from 'react-router-dom'
+
+import Layout from './components/layout/Layout'
+import queryClient from './configs/queryClient'
+import store from './store'
 
 function App() {
+  let routes: RouteObject[] = [
+    {
+      path: '/',
+      element: <Layout />,
+      children: [{ index: true, element: <div>Home</div> }]
+    }
+  ]
+
+  const router = useRoutes(routes)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <Suspense fallback={<div>Loading...</div>}>{router}</Suspense>
+
+          {process.env.NODE_ENV === 'development' && <ReactQueryDevtools />}
+        </Provider>
+      </QueryClientProvider>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
