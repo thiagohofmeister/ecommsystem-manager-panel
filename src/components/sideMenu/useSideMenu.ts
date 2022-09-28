@@ -3,8 +3,7 @@ import { useRef } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { useSelector } from '../../hooks/useSelector'
-import { setSideMenuOpen } from '../../store/layout/actions'
-import { ILayoutState } from '../../store/layout/types'
+import { ILayoutState } from '../../store/layoutDuck'
 
 const useStyles = makeStyles(
   theme => ({
@@ -79,14 +78,10 @@ export const useSideMenu = () => {
 
   const sideMenuRef = useRef<HTMLDivElement>(null)
 
-  const toggleSideMenu = () => {
-    dispatch(setSideMenuOpen(!sideMenuOpen))
-  }
-
   return {
     classes,
     sideMenuOpen,
     sideMenuRef,
-    toggleSideMenu
+    dispatch
   }
 }

@@ -11,7 +11,6 @@ export const useGetProductList = (
   queryParams?: QueryParams,
   options?: UseQueryOptions<Response>
 ) => {
-  console.log('ENTROU')
   const { endpoint, getList } = useProduct()
   const { formatList } = useProductFormatter()
 

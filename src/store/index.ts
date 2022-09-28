@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { combineReducers } from 'redux'
 
-import layout from './layout'
+import { reducer as layout } from './layoutDuck'
 
 const reducer = combineReducers({
   layout

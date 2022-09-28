@@ -7,13 +7,19 @@ import { RouteObject, useRoutes } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import queryClient from './configs/queryClient'
 import store from './store'
+import Dashboard from './views/dashboard/Dashboard'
+import Login from './views/login/Login'
 
 function App() {
   let routes: RouteObject[] = [
     {
       path: '/',
       element: <Layout />,
-      children: [{ index: true, element: <div>Home</div> }]
+      children: [{ index: true, element: <Dashboard /> }]
+    },
+    {
+      path: '/login',
+      element: <Login />
     }
   ]
 
