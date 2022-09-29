@@ -1,6 +1,33 @@
 import { createTheme } from '@material-ui/core/styles'
 
 export default createTheme({
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        '*': {
+          boxSizing: 'border-box'
+        },
+        body: {
+          margin: 0,
+          fontFamily:
+            "-apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+          '-webkit-font-smoothing': 'antialiased',
+          '-moz-osx-font-smoothing': 'grayscale'
+        },
+        code: {
+          fontFamily: "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace"
+        },
+        'textarea, input, button, select': {
+          fontFamily: 'inherit',
+          fontSize: 'inherit'
+        },
+        a: {
+          textDecoration: 'none',
+          color: 'inherit'
+        }
+      }
+    }
+  },
   button: {
     save: {
       backgroundColor: 'green',

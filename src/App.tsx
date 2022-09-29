@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@material-ui/core'
+import { CssBaseline, ThemeProvider } from '@material-ui/core'
 import { Suspense } from 'react'
 import { QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
@@ -16,6 +16,7 @@ function App() {
     <div className="App">
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={AppTheme}>
+          <CssBaseline />
           <Provider store={store}>
             <Suspense fallback={<div>Loading...</div>}>{router}</Suspense>
 
