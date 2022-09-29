@@ -30,7 +30,7 @@ const useStyles = makeStyles(
     }
   }),
   {
-    name: 'button'
+    name: 'Button'
   }
 )
 

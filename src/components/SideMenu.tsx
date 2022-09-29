@@ -4,40 +4,45 @@ import { Link } from 'react-router-dom'
 
 import { useSideMenu } from './hooks/useSideMenu'
 
-const useStyles = makeStyles((theme: ThemeOptions) => ({
-  root: {
-    width: '50px',
-    height: 'calc(100vh - 60px)',
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: theme.sideMenu?.backgroundColor,
-    borderRight: `2px solid ${theme.sideMenu?.borderRightColor}`,
-    transition: 'all 0.3s ease',
-    position: 'fixed',
-    zIndex: 1,
+const useStyles = makeStyles(
+  (theme: ThemeOptions) => ({
+    root: {
+      width: '50px',
+      height: 'calc(100vh - 60px)',
+      display: 'flex',
+      flexDirection: 'column',
+      backgroundColor: theme.sideMenu?.backgroundColor,
+      borderRight: `2px solid ${theme.sideMenu?.borderRightColor}`,
+      transition: 'all 0.3s ease',
+      position: 'fixed',
+      zIndex: 1,
 
-    '&--opened': {
-      width: '250px'
-    },
+      '&--opened': {
+        width: '250px'
+      },
 
-    '&__item': {
-      marginBottom: '5px',
-      color: theme.sideMenu?.menuItem?.color,
+      '&__item': {
+        marginBottom: '5px',
+        color: theme.sideMenu?.menuItem?.color,
 
-      '&-title': {
-        boxSizing: 'border-box',
-        width: '100%',
-        padding: '10px',
-        background: theme.sideMenu?.menuItem?.backgroundColor
+        '&-title': {
+          boxSizing: 'border-box',
+          width: '100%',
+          padding: '10px',
+          background: theme.sideMenu?.menuItem?.backgroundColor
+        }
+      },
+
+      '&__sub-item': {
+        padding: '10px 10px 10px 20px',
+        color: theme.sideMenu?.menuSubItem?.color
       }
-    },
-
-    '&__sub-item': {
-      padding: '10px 10px 10px 20px',
-      color: theme.sideMenu?.menuSubItem?.color
     }
+  }),
+  {
+    name: 'SideMenu'
   }
-}))
+)
 
 const SideMenu = () => {
   const classes = useStyles()

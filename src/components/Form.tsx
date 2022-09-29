@@ -3,23 +3,28 @@ import { HTMLProps, useCallback } from 'react'
 
 import Button from './Button'
 
-const useStyles = makeStyles(theme => ({
-  form: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-
-    '& > *:not(:last-child)': {
-      marginBottom: '20px'
-    },
-
-    '&__actions': {
+const useStyles = makeStyles(
+  theme => ({
+    form: {
+      width: '100%',
       display: 'flex',
-      justifyContent: 'flex-end',
-      gap: '15px'
+      flexDirection: 'column',
+
+      '& > *:not(:last-child)': {
+        marginBottom: '20px'
+      },
+
+      '&__actions': {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        gap: '15px'
+      }
     }
+  }),
+  {
+    name: 'Form'
   }
-}))
+)
 
 const Form: React.FC<FormProps> = ({ onSubmit, btnSubmitLabel, onCancel, ...props }) => {
   const classes = useStyles()
