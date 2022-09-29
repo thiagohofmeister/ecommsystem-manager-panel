@@ -1,0 +1,29 @@
+@import '../../mixins.scss';
+
+.button {
+  display: flex;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 3px;
+  padding: 10px;
+  justify-content: center;
+
+  &--create {
+    background: $buttonCreateBackgroundColor;
+    color: $buttonCreateTextColor;
+    font-weight: bold;
+  }
+
+  &--save {
+    background: $buttonSaveBackgroundColor;
+    color: $buttonSaveTextColor;
+    font-weight: bold;
+  }
+
+  &--cancel {
+    background: $buttonCancelBackgroundColor;
+    color: $buttonCancelTextColor;
+  }
+}

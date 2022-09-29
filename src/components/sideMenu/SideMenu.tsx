@@ -1,6 +1,7 @@
 import './SideMenu.scss'
 
 import classNames from 'classnames'
+import { Link } from 'react-router-dom'
 
 import { useSideMenu } from './useSideMenu'
 
@@ -28,7 +29,21 @@ const SideMenu = () => {
       className={classNames(classes.root, {
         [classes.opened]: sideMenuOpen
       })}
-      ref={sideMenuRef}></div>
+      ref={sideMenuRef}>
+      <nav>
+        <div className="side-menu__item">
+          <div className="side-menu__item-title">
+            <Link to="/">Dashboard</Link>
+          </div>
+        </div>
+
+        <div className="side-menu__item">
+          <div className="side-menu__item-title">
+            <Link to="/brand/list">Marcas</Link>
+          </div>
+        </div>
+      </nav>
+    </div>
   )
 }
 
