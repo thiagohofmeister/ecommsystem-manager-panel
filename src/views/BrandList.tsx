@@ -1,10 +1,10 @@
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import Button from '../../components/Button'
-import PageTitle from '../../components/PageTitle'
+import Button from '../components/Button'
+import PageTitle from '../components/PageTitle'
 
-export const ListBrand = () => {
+export const BrandList = () => {
   const navigation = useNavigate()
 
   const handleAddBrand = useCallback(() => {
@@ -25,4 +25,4 @@ export const ListBrand = () => {
   )
 }
 
-export default ListBrand
+export default BrandList

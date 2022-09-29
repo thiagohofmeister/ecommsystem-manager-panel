@@ -2,15 +2,15 @@ import { kebabCase } from 'lodash'
 import { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import Form from '../../components/Form'
-import FormGroup from '../../components/FormGroup'
-import InputContainer from '../../components/InputContainer'
-import PageTitle from '../../components/PageTitle'
-import TextAreaContainer from '../../components/TextAreaContainer'
-import { useCreateBrand } from '../../hooks/useCreateBrand'
-import { Brand } from '../../models/Brand'
+import Form from '../components/Form'
+import FormGroup from '../components/FormGroup'
+import InputContainer from '../components/InputContainer'
+import PageTitle from '../components/PageTitle'
+import TextAreaContainer from '../components/TextAreaContainer'
+import { useCreateBrand } from '../hooks/useCreateBrand'
+import { Brand } from '../models/Brand'
 
-export const SaveBrand = () => {
+export const BrandSave = () => {
   const navigation = useNavigate()
   const { mutateAsync } = useCreateBrand({
     onSuccess: () => {
@@ -64,4 +64,4 @@ export const SaveBrand = () => {
   )
 }
 
-export default SaveBrand
+export default BrandSave
