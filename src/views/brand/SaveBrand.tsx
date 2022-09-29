@@ -1,18 +1,16 @@
-import './CreateBrand.scss'
-
 import { kebabCase } from 'lodash'
 import { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import Form from '../../../components/form/Form'
-import FormGroup from '../../../components/formGroup/FormGroup'
-import InputContainer from '../../../components/inputContainer/InputContainer'
-import PageTitle from '../../../components/pageTitle/PageTitle'
-import TextAreaContainer from '../../../components/textAreaContainer/TextAreaContainer'
-import { useCreateBrand } from '../../../hooks/useCreateBrand'
-import { Brand } from '../../../models/Brand'
+import Form from '../../components/Form'
+import FormGroup from '../../components/FormGroup'
+import InputContainer from '../../components/InputContainer'
+import PageTitle from '../../components/PageTitle'
+import TextAreaContainer from '../../components/TextAreaContainer'
+import { useCreateBrand } from '../../hooks/useCreateBrand'
+import { Brand } from '../../models/Brand'
 
-export const CreateBrand = () => {
+export const SaveBrand = () => {
   const navigation = useNavigate()
   const { mutateAsync } = useCreateBrand({
     onSuccess: () => {
@@ -32,7 +30,7 @@ export const CreateBrand = () => {
   }, [navigation])
 
   return (
-    <div className="create-brand">
+    <div className="save-brand">
       <PageTitle title="Cadastro de marcas" />
 
       <Form onSubmit={() => mutateAsync(data)} btnSubmitLabel="Cadastrar" onCancel={onCancel}>
@@ -66,4 +64,4 @@ export const CreateBrand = () => {
   )
 }
 
-export default CreateBrand
+export default SaveBrand

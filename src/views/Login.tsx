@@ -1,8 +1,6 @@
-import './Login.scss'
-
 import { useCallback, useState } from 'react'
 
-import { useCreateAuthentication } from '../../hooks/useCreateAuthentication'
+import { useCreateAuthentication } from '../hooks/useCreateAuthentication'
 
 const Login = () => {
   const { mutateAsync: auth } = useCreateAuthentication()

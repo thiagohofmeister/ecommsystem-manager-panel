@@ -1,10 +1,8 @@
-import './ListBrand.scss'
-
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import Button from '../../../components/button/Button'
-import PageTitle from '../../../components/pageTitle/PageTitle'
+import Button from '../../components/Button'
+import PageTitle from '../../components/PageTitle'
 
 export const ListBrand = () => {
   const navigation = useNavigate()

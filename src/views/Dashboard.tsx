@@ -1,6 +1,4 @@
-import './Dashboard.scss'
-
-import PageTitle from '../../components/pageTitle/PageTitle'
+import PageTitle from '../components/PageTitle'
 
 const Dashboard = () => {
   return (

@@ -1,44 +1,27 @@
+import { ThemeProvider } from '@material-ui/core'
 import { Suspense } from 'react'
 import { QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { Provider } from 'react-redux'
-import { RouteObject, useRoutes } from 'react-router-dom'
 
-import Layout from './components/layout/Layout'
 import queryClient from './configs/queryClient'
+import { useRoutes } from './hooks/useRoutes'
 import store from './store'
-import CreateBrand from './views/brand/createBrand/CreateBrand'
-import ListBrand from './views/brand/listBrand/ListBrand'
-import Dashboard from './views/dashboard/Dashboard'
-import Login from './views/login/Login'
+import AppTheme from './theme/AppTheme'
 
 function App() {
-  let routes: RouteObject[] = [
-    {
-      path: '/',
-      element: <Layout />,
-      children: [
-        { index: true, element: <Dashboard /> },
-        { path: '/brand/create', element: <CreateBrand /> },
-        { path: '/brand/list', element: <ListBrand /> }
-      ]
-    },
-    {
-      path: '/login',
-      element: <Login />
-    }
-  ]
-
-  const router = useRoutes(routes)
+  const { router } = useRoutes()
 
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
-        <Provider store={store}>
-          <Suspense fallback={<div>Loading...</div>}>{router}</Suspense>
+        <ThemeProvider theme={AppTheme}>
+          <Provider store={store}>
+            <Suspense fallback={<div>Loading...</div>}>{router}</Suspense>
 
-          {process.env.NODE_ENV === 'development' && <ReactQueryDevtools />}
-        </Provider>
+            {process.env.NODE_ENV === 'development' && <ReactQueryDevtools />}
+          </Provider>
+        </ThemeProvider>
       </QueryClientProvider>
     </div>
   )
