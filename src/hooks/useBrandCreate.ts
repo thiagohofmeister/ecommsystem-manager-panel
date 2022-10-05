@@ -5,7 +5,7 @@ import { Brand } from '../models/Brand'
 import { useBrand } from '../services/api/brand/useBrand'
 import { useBrandFormatter } from '../services/api/brand/useBrandFormatter'
 
-export const useCreateBrand = (options?: UseMutationOptions<Brand, unknown, Brand>) => {
+export const useBrandCreate = (options?: UseMutationOptions<Brand, unknown, Brand>) => {
   const { endpoint, create } = useBrand()
   const { format } = useBrandFormatter()
 

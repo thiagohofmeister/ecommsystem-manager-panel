@@ -7,7 +7,7 @@ import { QueryParams } from '../services/api/models/QueryParams'
 import { useProduct } from '../services/api/product/useProduct'
 import { useProductFormatter } from '../services/api/product/useProductFormatter'
 
-export const useGetProductList = (
+export const useProductGetList = (
   queryParams?: QueryParams,
   options?: UseQueryOptions<Response>
 ) => {

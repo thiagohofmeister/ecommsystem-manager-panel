@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import { axiosInstance } from '../axios'
 
 export const useAuthentication = () => {
-  const instance = axiosInstance()
+  const instance = axiosInstance(false)
   const endpoint = 'authentication'
 
   const auth = useCallback(

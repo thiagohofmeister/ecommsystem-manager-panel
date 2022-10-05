@@ -6,7 +6,7 @@ import { Authentication } from '../models/Authentication'
 import { useAuthentication } from '../services/api/authentication/useAuthentication'
 import { useAuthenticationFormatter } from '../services/api/authentication/useAuthenticationFormatter'
 
-export const useCreateAuthentication = (
+export const useAuthenticationCreate = (
   options?: UseMutationOptions<Authentication, unknown, TVariables>
 ) => {
   const { endpoint, auth } = useAuthentication()
@@ -32,7 +32,10 @@ export const useCreateAuthentication = (
       cookie.set('token', data.authToken)
 
       options?.onSuccess?.(data, variables, context)
-      window.location.href = '/'
+
+      const params = new URLSearchParams(window.location.search)
+
+      window.location.href = params.get('redirect') || '/'
     }
   })
 

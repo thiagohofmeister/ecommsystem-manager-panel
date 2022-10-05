@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react'
 
-import { useCreateAuthentication } from '../hooks/useCreateAuthentication'
+import { useAuthenticationCreate } from '../hooks/useAuthenticationCreate'
 
 const Login = () => {
-  const { mutateAsync: auth } = useCreateAuthentication()
+  const { mutateAsync: auth } = useAuthenticationCreate()
   const [user, setUser] = useState({ data: '', password: '' })
 
   const handleSubmit = useCallback(

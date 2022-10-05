@@ -5,7 +5,7 @@ const axiosInstance = (isLogged: boolean = true) => {
   const token = cookie.get('token')
 
   if (isLogged && !token) {
-    // Redirect to login
+    window.location.href = `/login?redirect=${window.location.href}`
   }
 
   const headers: any = {}
@@ -18,6 +18,17 @@ const axiosInstance = (isLogged: boolean = true) => {
     baseURL: process.env.REACT_APP_API_URL,
     headers
   })
+
+  instance.interceptors.response.use(
+    response => {
+      return response
+    },
+    error => {
+      if (error.response.status === 401) {
+        cookie.remove('token')
+      }
+    }
+  )
 
   return instance
 }

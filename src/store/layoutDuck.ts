@@ -68,4 +68,4 @@ type ILayoutAction =
   | { type: LayoutTypes.SET_SIDE_MENU_OPEN; payload: boolean }
   | { type: LayoutTypes.SET_LOGGED_USER; payload: Token | null }
 
-type LayoutDispatch = Dispatch<Partial<ILayoutState> & Action<ILayoutAction>>
+type LayoutDispatch = Dispatch<Partial<ILayoutState> & Action<LayoutTypes>>

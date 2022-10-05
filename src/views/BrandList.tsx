@@ -2,7 +2,9 @@ import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Button from '../components/Button'
+import List from '../components/List'
 import PageTitle from '../components/PageTitle'
+import { useBrandGetList } from '../hooks/useBrandGetList'
 
 export const BrandList = () => {
   const navigation = useNavigate()
@@ -21,6 +23,8 @@ export const BrandList = () => {
           onClick={handleAddBrand}
         />
       </PageTitle>
+
+      <List query={useBrandGetList} gridTemplateColumns="auto" />
     </div>
   )
 }

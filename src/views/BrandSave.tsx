@@ -7,12 +7,12 @@ import FormGroup from '../components/FormGroup'
 import InputContainer from '../components/InputContainer'
 import PageTitle from '../components/PageTitle'
 import TextAreaContainer from '../components/TextAreaContainer'
-import { useCreateBrand } from '../hooks/useCreateBrand'
+import { useBrandCreate } from '../hooks/useBrandCreate'
 import { Brand } from '../models/Brand'
 
 export const BrandSave = () => {
   const navigation = useNavigate()
-  const { mutateAsync } = useCreateBrand({
+  const { mutateAsync } = useBrandCreate({
     onSuccess: () => {
       navigation('/brand/list')
     }
