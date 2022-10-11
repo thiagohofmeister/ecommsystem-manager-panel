@@ -8,8 +8,11 @@ import TopBar from './TopBar'
 const useStyles = makeStyles(
   {
     root: {
+      overflow: 'hidden',
+
       '&__container': {
         width: '100%',
+        maxHeight: 'calc(100vh - 60px)',
         display: 'flex'
       }
     }

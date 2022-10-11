@@ -15,6 +15,7 @@ const useStyles = makeStyles(
       borderRight: `2px solid ${theme.sideMenu?.borderRightColor}`,
       transition: 'all 0.3s ease',
       position: 'fixed',
+      top: 60,
       zIndex: 1,
 
       '&--opened': {

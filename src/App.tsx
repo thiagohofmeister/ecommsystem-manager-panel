@@ -1,3 +1,4 @@
+import './App.scss'
 import 'components/Toast/Toast.scss'
 
 import { CssBaseline, ThemeProvider } from '@material-ui/core'
@@ -17,7 +18,7 @@ function App() {
   const { router } = useRoutes()
 
   return (
-    <div className="App">
+    <div className="app">
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={AppTheme}>
           <CssBaseline />

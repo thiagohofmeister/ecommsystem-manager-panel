@@ -9,12 +9,18 @@ export default createTheme({
           margin: 0,
           padding: 0
         },
+        html: {
+          height: '100vh',
+          overflow: 'hidden'
+        },
         body: {
           margin: 0,
           fontFamily:
             "-apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
           '-webkit-font-smoothing': 'antialiased',
-          '-moz-osx-font-smoothing': 'grayscale'
+          '-moz-osx-font-smoothing': 'grayscale',
+          overflow: 'hidden',
+          minHeight: '100vh'
         },
         code: {
           fontFamily: "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace"
@@ -26,6 +32,16 @@ export default createTheme({
         a: {
           textDecoration: 'none',
           color: 'inherit'
+        },
+        '::-webkit-scrollbar': {
+          width: ' 5px'
+        },
+        '::-webkit-scrollbar-track': {
+          background: '#e8e8e8'
+        },
+        '::-webkit-scrollbar-thumb': {
+          backgroundColor: '#a9a9a9',
+          borderRadius: '100px'
         }
       }
     }

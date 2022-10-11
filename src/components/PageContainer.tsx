@@ -9,8 +9,9 @@ const useStyles = makeStyles(
     root: {
       width: '100%',
       marginLeft: '55px',
-      padding: '0 15px',
+      padding: '0 15px 30px',
       transition: '0.3s ease all',
+      overflowY: 'scroll',
 
       '&--side-bar-opened': {
         marginLeft: '250px'
