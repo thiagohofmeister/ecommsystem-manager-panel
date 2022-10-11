@@ -1,10 +1,8 @@
 import { makeStyles } from '@material-ui/core'
 import classNames from 'classnames'
-import { useEditContext } from 'providers/EditProvider'
 import { HTMLProps, useCallback } from 'react'
 
 import Button from '../Button'
-import { useForm } from './useForm'
 
 const useStyles = makeStyles(
   theme => ({
@@ -31,14 +29,12 @@ const useStyles = makeStyles(
 
 const Form: React.FC<FormProps> = ({ onSubmit, btnSubmitLabel, onCancel, ...props }) => {
   const classes = useStyles()
-  const { immutableData } = useEditContext()
-  const controller = useForm(immutableData)
 
   const handleSubmit = useCallback(
     (e: any) => {
       e.preventDefault()
 
-      controller.saveChanges()
+      onSubmit && onSubmit()
     },
     [onSubmit]
   )

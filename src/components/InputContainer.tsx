@@ -113,7 +113,7 @@ const InputContainer: React.FC<InputContainerProps> = ({
     <div className={classes.root}>
       <div
         className={classNames(`${classes.container}`, {
-          [`${classes.container}--with-value`]: !!controller?.field.value
+          [`${classes.container}--with-value`]: !!value
         })}>
         {!!prefix && <div className={`${classes.container}__prefix`}>{prefix}</div>}
 

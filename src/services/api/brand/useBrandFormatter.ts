@@ -7,7 +7,12 @@ import { BrandGetListResponse } from './models/BrandGetListResponse'
 
 export const useBrandFormatter = () => {
   const format = useCallback<(apiEntity: BrandCreateResponse | BrandGetListResponse) => Brand>(
-    apiEntity => apiEntity,
+    apiEntity => ({
+      id: apiEntity.id,
+      description: apiEntity.description,
+      label: apiEntity.label,
+      urn: apiEntity.urn
+    }),
     []
   )
 
