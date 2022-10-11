@@ -5,7 +5,9 @@ export default createTheme({
     MuiCssBaseline: {
       '@global': {
         '*': {
-          boxSizing: 'border-box'
+          boxSizing: 'border-box',
+          margin: 0,
+          padding: 0
         },
         body: {
           margin: 0,
@@ -24,6 +26,43 @@ export default createTheme({
         a: {
           textDecoration: 'none',
           color: 'inherit'
+        }
+      }
+    }
+  },
+  activityIndicatorBackgroundColor: 'blue',
+  table: {
+    body: {
+      column: {
+        color: 'red'
+      },
+      row: {
+        borderBottomColor: 'red',
+        hoverBackgroundColor: 'blue',
+        selectedBackgroundColor: 'gray',
+        disabledBackgroundColor: 'gray',
+        disabledColor: 'darkgray'
+      }
+    }
+  },
+  list: {
+    paginator: {
+      breakColor: '#96a1a8',
+      page: {
+        backgroundColor: '#FFF',
+        hover: {
+          borderColor: '#f4f5f5',
+          backgroundColor: '#ccc'
+        },
+        active: {
+          borderColor: '#f4f5f5',
+          backgroundColor: '#ccc'
+        },
+        buttonPaginate: {
+          iconColor: '#ccc',
+          disabled: {
+            iconColor: '#c4c4c4'
+          }
         }
       }
     }
@@ -90,7 +129,59 @@ export default createTheme({
 declare module '@material-ui/core/styles/createTheme' {
   // permitir configuração usando `createTheme`
   interface ThemeOptions {
-    button: {
+    activityIndicatorBackgroundColor?: React.CSSProperties['backgroundColor']
+    iconColor?: React.CSSProperties['color']
+    list?: {
+      paginator?: {
+        breakColor?: React.CSSProperties['color']
+        page?: {
+          color?: React.CSSProperties['color']
+          backgroundColor?: React.CSSProperties['backgroundColor']
+          hover?: {
+            borderColor?: React.CSSProperties['borderColor']
+            backgroundColor?: React.CSSProperties['backgroundColor']
+          }
+          active?: {
+            borderColor?: React.CSSProperties['borderColor']
+            backgroundColor?: React.CSSProperties['backgroundColor']
+          }
+          buttonPaginate?: {
+            iconColor?: React.CSSProperties['color']
+            disabled?: {
+              iconColor?: React.CSSProperties['color']
+            }
+          }
+        }
+      }
+    }
+    panel?: {
+      backgroundColor?: React.CSSProperties['backgroundColor']
+    }
+    panelMessage?: {
+      mainTextColor?: React.CSSProperties['color']
+      secondTextColor?: React.CSSProperties['color']
+    }
+    table?: {
+      header?: {
+        backgroundColor?: React.CSSProperties['backgroundColor']
+        column?: {
+          color?: React.CSSProperties['color']
+        }
+      }
+      body?: {
+        column?: {
+          color?: React.CSSProperties['color']
+        }
+        row?: {
+          borderBottomColor?: React.CSSProperties['borderBottomColor']
+          hoverBackgroundColor?: React.CSSProperties['backgroundColor']
+          selectedBackgroundColor?: React.CSSProperties['backgroundColor']
+          disabledBackgroundColor?: React.CSSProperties['backgroundColor']
+          disabledColor?: React.CSSProperties['color']
+        }
+      }
+    }
+    button?: {
       save?: {
         backgroundColor?: React.CSSProperties['backgroundColor']
         color?: React.CSSProperties['color']

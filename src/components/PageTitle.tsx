@@ -7,7 +7,7 @@ const useStyles = makeStyles(
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      marginTop: '10px',
+      margin: '20px 0 40px',
       '& > h1': {
         fontSize: '16px',
         color: theme.pageTitle?.h1Color

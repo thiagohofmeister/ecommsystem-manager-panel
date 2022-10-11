@@ -1,38 +1,68 @@
+import { makeStyles } from '@material-ui/core'
 import { useCallback, useState } from 'react'
 
+import Form from '../components/Form/Form'
+import InputContainer from '../components/InputContainer'
 import { useAuthenticationCreate } from '../hooks/useAuthenticationCreate'
 
+const useStyles = makeStyles(
+  {
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+
+      '& > h1': {
+        fontSize: '18px',
+        margin: 0
+      },
+
+      '& > p': {
+        fontSize: '14px',
+        margin: '20px 0'
+      },
+
+      '&__form': {
+        width: '400px'
+      }
+    }
+  },
+  {
+    name: 'Login'
+  }
+)
+
 const Login = () => {
+  const classes = useStyles()
   const { mutateAsync: auth } = useAuthenticationCreate()
   const [user, setUser] = useState({ data: '', password: '' })
 
-  const handleSubmit = useCallback(
-    async (e: any) => {
-      e.preventDefault()
-
-      await auth(user)
-    },
-    [user, auth]
-  )
+  const handleSubmit = useCallback(async () => {
+    await auth(user)
+  }, [user, auth])
 
   return (
-    <div className="login">
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Email"
+    <div className={classes.root}>
+      <h1>Bem-vindo</h1>
+
+      <p>Informe seus dados de autenticação para acessar a plataforma.</p>
+
+      <Form onSubmit={handleSubmit} btnSubmitLabel="Acessar" className={`${classes.root}__form`}>
+        <InputContainer
+          label="Usuário"
           value={user.data}
-          onChange={e => setUser({ ...user, data: e.target.value })}
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          value={user.password}
-          onChange={e => setUser({ ...user, password: e.target.value })}
+          onChange={data => setUser({ ...user, data })}
         />
 
-        <button>Acessar</button>
-      </form>
+        <InputContainer
+          input={{ type: 'password' }}
+          label="Senha"
+          value={user.password}
+          onChange={password => setUser({ ...user, password })}
+        />
+      </Form>
     </div>
   )
 }

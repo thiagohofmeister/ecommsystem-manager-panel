@@ -1,9 +1,13 @@
+import 'components/Toast/Toast.scss'
+
 import { CssBaseline, ThemeProvider } from '@material-ui/core'
 import { Suspense } from 'react'
 import { QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { Provider } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
 
+import { ActivityIndicator } from './components/ActivityIndicator'
 import queryClient from './configs/queryClient'
 import { useRoutes } from './hooks/useRoutes'
 import store from './store'
@@ -18,11 +22,12 @@ function App() {
         <ThemeProvider theme={AppTheme}>
           <CssBaseline />
           <Provider store={store}>
-            <Suspense fallback={<div>Loading...</div>}>{router}</Suspense>
+            <Suspense fallback={<ActivityIndicator center />}>{router}</Suspense>
 
             {process.env.NODE_ENV === 'development' && <ReactQueryDevtools />}
           </Provider>
         </ThemeProvider>
+        <ToastContainer pauseOnHover={false} theme="light" hideProgressBar />
       </QueryClientProvider>
     </div>
   )

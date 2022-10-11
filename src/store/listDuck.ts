@@ -8,7 +8,10 @@ import { QueryParamsFilter } from '../services/api/models/QueryParamsFilter'
 
 const INITIAL_STATE: IListState = {
   filters: {},
-  params: {}
+  params: {
+    page: 1,
+    size: 15
+  }
 }
 
 export enum ListTypes {
@@ -17,7 +20,10 @@ export enum ListTypes {
 
 const setPagination = (pagination: { page?: number; size?: number }): IListAction => ({
   type: ListTypes.SET_PAGINATION,
-  pagination
+  pagination: {
+    page: pagination.page || INITIAL_STATE.params.page,
+    size: pagination.size || INITIAL_STATE.params.size
+  }
 })
 
 export const reducer: Reducer<IListState, IListAction> = (currentState = INITIAL_STATE, action) => {
@@ -27,8 +33,8 @@ export const reducer: Reducer<IListState, IListAction> = (currentState = INITIAL
         ...currentState,
         params: {
           ...currentState.params,
-          page: action.pagination.page === 1 ? undefined : action.pagination.page,
-          size: action.pagination.size === 15 ? undefined : action.pagination.size
+          page: action.pagination.page,
+          size: action.pagination.size
         }
       }
 
@@ -45,8 +51,8 @@ interface IListState {
 export type IListAction = {
   type: ListTypes.SET_PAGINATION
   pagination: {
-    page?: number
-    size?: number
+    page: number
+    size: number
   }
 }
 

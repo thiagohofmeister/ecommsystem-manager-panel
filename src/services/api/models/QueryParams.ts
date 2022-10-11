@@ -6,7 +6,7 @@ export interface QueryParams<Params = DefaultQueryParams> {
 }
 
 export interface DefaultQueryParams {
-  page?: number
-  size?: number
+  page: number
+  size: number
   search?: string
 }

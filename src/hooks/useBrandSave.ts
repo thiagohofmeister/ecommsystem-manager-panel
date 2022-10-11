@@ -1,0 +1,46 @@
+import { toastSuccess } from 'components/Toast/Toast'
+import { update } from 'lodash'
+import { useCallback, useMemo } from 'react'
+import { useMutation, UseMutationOptions, useQueryClient } from 'react-query'
+import { useBrandParser } from 'services/api/brand/useBrandParser'
+
+import { Brand } from '../models/Brand'
+import { useBrand } from '../services/api/brand/useBrand'
+import { useBrandFormatter } from '../services/api/brand/useBrandFormatter'
+
+export const useBrandSave = (id?: string, options?: UseMutationOptions<Brand, unknown, Brand>) => {
+  const queryClient = useQueryClient()
+  const { endpoint, create, update } = useBrand()
+  const { format } = useBrandFormatter()
+  const { parseCreate, parseUpdate } = useBrandParser()
+
+  const mutationKey = useMemo(() => [endpoint, id], [endpoint, id])
+
+  const mutationFn = useCallback(
+    async (brand: Brand) => {
+      if (id) {
+        return format(await update(id, parseUpdate(brand)))
+      }
+
+      return format(await create(parseCreate(brand)))
+    },
+    [create, format]
+  )
+
+  const mutation = useMutation<Brand, unknown, Brand>(mutationKey, mutationFn, {
+    onError: () => {},
+    onSuccess: (data, variables, context) => {
+      if (id) {
+        queryClient.setQueryData(mutationKey, data)
+        toastSuccess('Sucesso ao atualizar marca')
+        return
+      }
+
+      toastSuccess('Sucesso ao cadastrar marca')
+
+      options?.onSuccess?.(data, variables, context)
+    }
+  })
+
+  return mutation
+}

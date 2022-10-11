@@ -16,6 +16,7 @@ export const useRoutes = () => {
         children: [
           { index: true, element: <Dashboard /> },
           { path: '/brand/create', element: <BrandSave /> },
+          { path: '/brand/edit/:id', element: <BrandSave /> },
           { path: '/brand/list', element: <BrandList /> }
         ]
       },

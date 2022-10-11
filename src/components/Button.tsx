@@ -15,17 +15,17 @@ const useStyles = makeStyles(
       justifyContent: 'center',
 
       '&--create': {
-        ...theme.button.create,
+        ...theme.button?.create,
         fontWeight: 'bold'
       },
 
       '&--save': {
-        ...theme.button.save,
+        ...theme.button?.save,
         fontWeight: 'bold'
       },
 
       '&--cancel': {
-        ...theme.button.cancel
+        ...theme.button?.cancel
       }
     }
   }),

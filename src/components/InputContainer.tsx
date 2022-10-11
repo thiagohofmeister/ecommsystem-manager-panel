@@ -1,10 +1,19 @@
 import { makeStyles, ThemeOptions } from '@material-ui/core'
 import classNames from 'classnames'
-import { HTMLProps } from 'react'
+import { HTMLProps, useMemo } from 'react'
+import { FieldError, UseControllerReturn } from 'react-hook-form'
+
+import { useInputModel } from '../hooks/useInputModel'
+import { InputErrorMessage } from './InputErrorMessage'
 
 const useStyles = makeStyles(
   (theme: ThemeOptions) => ({
     root: {
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column'
+    },
+    container: {
       width: '100%',
       display: 'flex',
       height: '40px',
@@ -19,7 +28,8 @@ const useStyles = makeStyles(
         border: 'none',
         outline: 'none',
         fontSize: '14px',
-        marginLeft: '10px'
+        marginLeft: '10px',
+        background: 'transparent'
       },
 
       '& span': {
@@ -76,34 +86,57 @@ const useStyles = makeStyles(
 )
 
 const InputContainer: React.FC<InputContainerProps> = ({
-  onChange,
   label,
-  value,
   input,
   prefix,
   suffix,
-  isRequired: required
+  hideErrorMessage,
+  customError,
+  controller,
+  isRequired: required,
+  ...props
 }) => {
   const classes = useStyles()
 
+  const error = useMemo<FieldError | undefined>(
+    () => customError || controller?.fieldState.error,
+    [customError, controller]
+  )
+
+  const { value, onChange } = useInputModel({
+    controller,
+    onChange: props.onChange,
+    value: props.value
+  })
+
   return (
-    <div
-      className={classNames(classes.root, {
-        [`${classes.root}--with-value`]: !!value
-      })}>
-      {!!prefix && <div className={`${classes.root}__prefix`}>{prefix}</div>}
+    <div className={classes.root}>
+      <div
+        className={classNames(`${classes.container}`, {
+          [`${classes.container}--with-value`]: !!controller?.field.value
+        })}>
+        {!!prefix && <div className={`${classes.container}__prefix`}>{prefix}</div>}
 
-      <label className={`${classes.root}__label`}>
-        {!!label && (
-          <div className={classes.labelTitle}>
-            {label} {required && <span>*</span>}
-          </div>
-        )}
+        <label className={`${classes.container}__label`}>
+          {!!label && (
+            <div className={classes.labelTitle}>
+              {label} {required && <span>*</span>}
+            </div>
+          )}
 
-        <input {...input} onChange={e => onChange(e.target.value)} value={value || ''} />
-      </label>
+          <input
+            {...input}
+            value={value || ''}
+            onChange={event => onChange?.(event.target.value)}
+            onBlur={controller?.field.onBlur}
+            ref={controller?.field.ref}
+            name={controller?.field.name}
+          />
+        </label>
 
-      {!!suffix && <div className={`${classes.root}__suffix`}>{suffix}</div>}
+        {!!suffix && <div className={`${classes.root}__suffix`}>{suffix}</div>}
+      </div>
+      {!!error && !hideErrorMessage && <InputErrorMessage error={error!} />}
     </div>
   )
 }
@@ -112,10 +145,13 @@ interface InputContainerProps {
   prefix?: string
   suffix?: string
   label?: string
-  value: string | null | undefined
+  value?: string | null | undefined
   isRequired?: boolean
-  onChange: (value: string) => void
+  onChange?: (value: string) => void
   input?: HTMLProps<HTMLInputElement>
+  controller?: UseControllerReturn<any, any>
+  hideErrorMessage?: boolean
+  customError?: FieldError | undefined
 }
 
 export default InputContainer

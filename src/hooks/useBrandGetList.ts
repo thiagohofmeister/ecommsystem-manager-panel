@@ -7,7 +7,7 @@ import { useBrandFormatter } from '../services/api/brand/useBrandFormatter'
 import { ListResponse } from '../services/api/models/ListResponse'
 import { QueryParams } from '../services/api/models/QueryParams'
 
-export const useBrandGetList = (queryParams?: QueryParams, options?: UseQueryOptions<Response>) => {
+export const useBrandGetList = (queryParams: QueryParams, options?: UseQueryOptions<Response>) => {
   const { endpoint, getList } = useBrand()
   const { formatList } = useBrandFormatter()
 

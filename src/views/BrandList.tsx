@@ -5,6 +5,7 @@ import Button from '../components/Button'
 import List from '../components/List'
 import PageTitle from '../components/PageTitle'
 import { useBrandGetList } from '../hooks/useBrandGetList'
+import { BrandTableProvider } from '../providers/brand/BrandTableProvider'
 
 export const BrandList = () => {
   const navigation = useNavigate()
@@ -24,7 +25,7 @@ export const BrandList = () => {
         />
       </PageTitle>
 
-      <List query={useBrandGetList} gridTemplateColumns="auto" />
+      <List query={useBrandGetList} tableProvider={BrandTableProvider} />
     </div>
   )
 }

@@ -3,10 +3,12 @@ import { combineReducers } from 'redux'
 
 import { reducer as layout } from './layoutDuck'
 import { reducer as list } from './listDuck'
+import { reducer as modal } from './modalDuck'
 
 const reducer = combineReducers({
   layout,
-  list
+  list,
+  modal
 })
 
 export type AppState = ReturnType<typeof reducer>
