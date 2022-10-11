@@ -38,12 +38,6 @@ export const BrandRowProvider: FC<BrandRowProviderProps> = ({ children, item: br
       actions={{
         EDIT: {
           link: `/brand/edit/${brand.id}`
-        },
-        DEACTIVATE: {
-          action: () => {}
-        },
-        DELETE: {
-          action: () => {} //handleDelete(brand.id)
         }
       }}
       isLoading={false}>
