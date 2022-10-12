@@ -1,6 +1,5 @@
-import { Suspense } from 'react'
-import BrandList from 'views/BrandList'
-import BrandSave from 'views/BrandSave'
+import BrandList from 'views/brand/BrandList'
+import BrandSave from 'views/brand/BrandSave'
 
 const brandRoute = {
   path: '/brand',

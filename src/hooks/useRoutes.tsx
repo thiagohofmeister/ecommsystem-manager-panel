@@ -5,29 +5,51 @@ import { RouteObject, useRoutes as useRoutesRouterDom } from 'react-router-dom'
 import routes from 'routes'
 
 export const useRoutes = () => {
-  const formatRoute = useCallback((route: Route): RouteObject => {
-    const routeObject: RouteObject = {
-      index: route.index,
-      path: route.path,
-      element: route.component,
-      children:
-        route.items && Object.keys(route.items).map(routeKey => formatRoute(route.items![routeKey]))
-    }
+  const formatRoutes = useCallback(
+    (withoutLayout: boolean = false) => {
+      return Object.keys(routes)
+        .map(routeKey => formatRoute(routes![routeKey], withoutLayout))
+        .filter(route => !!route) as RouteObject[]
+    },
+    [routes]
+  )
 
-    return routeObject
-  }, [])
+  const formatRoute = useCallback(
+    (route: Route, withoutLayout: boolean): RouteObject | undefined => {
+      if (!route.withoutLayout) {
+        route.withoutLayout = false
+      }
 
-  const routesToRouterDom = useMemo<RouteObject[]>(() => {
-    return [
+      if (route.withoutLayout !== withoutLayout) {
+        return
+      }
+
+      return {
+        index: route.index,
+        path: route.path,
+        element: route.component,
+        children:
+          route.items &&
+          (Object.keys(route.items)
+            .map(routeKey => formatRoute(route.items![routeKey], withoutLayout))
+            .filter(route => !!route) as RouteObject[])
+      }
+    },
+    [routes]
+  )
+
+  const routesToRouterDom = useMemo<RouteObject[]>(
+    () => [
       {
         label: 'Layout',
         path: '/',
         element: <Layout />,
-        children: Object.keys(routes).map(routeKey => formatRoute(routes![routeKey]))
+        children: formatRoutes()
       },
-      ...Object.keys(routes).map(routeKey => formatRoute(routes![routeKey]))
-    ]
-  }, [routes])
+      ...formatRoutes(true)
+    ],
+    [routes]
+  )
 
   const router = useRoutesRouterDom(routesToRouterDom)
 

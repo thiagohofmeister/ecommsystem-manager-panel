@@ -1,12 +1,11 @@
+import Button from 'components/Button'
+import List from 'components/List'
 import PageContainer from 'components/PageContainer'
 import PageContainerTopRight from 'components/PageContainerTopRight'
+import { useBrandGetList } from 'hooks/useBrandGetList'
+import { BrandTableProvider } from 'providers/brand/BrandTableProvider'
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-import Button from '../components/Button'
-import List from '../components/List'
-import { useBrandGetList } from '../hooks/useBrandGetList'
-import { BrandTableProvider } from '../providers/brand/BrandTableProvider'
 
 export const BrandList = () => {
   const navigation = useNavigate()

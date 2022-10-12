@@ -3,7 +3,7 @@ import FormInputsContainer from 'components/FormInputsContainer'
 import InputContainer from 'components/InputContainer'
 import TextAreaContainer from 'components/TextAreaContainer'
 
-import { useBrandData } from './brand/useBrandData'
+import { useBrandData } from './useBrandData'
 
 const BrandSaveForm: React.FC<BrandSaveFormProps> = () => {
   const { controllers } = useBrandData()

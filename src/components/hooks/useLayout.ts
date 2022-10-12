@@ -2,6 +2,7 @@ import cookie from 'js-cookie'
 import jwtDecode from 'jwt-decode'
 import { useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import { Token } from '../../models/Token'
 import { setLoggedUser } from '../../store/layoutDuck'
@@ -9,6 +10,7 @@ import { setLoggedUser } from '../../store/layoutDuck'
 export const useLayout = () => {
   const [viewLoading, setViewLoading] = useState<boolean>(true)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const setUser = useCallback(
     (token: string) => {
@@ -23,7 +25,8 @@ export const useLayout = () => {
       const token = cookie.get('token')
 
       if (!token) {
-        window.location.href = '/login'
+        navigate('/login')
+        return
       }
 
       setUser(token!)

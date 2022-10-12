@@ -2,7 +2,7 @@ import Login from 'views/Login'
 
 const loginRoute = {
   label: 'Login',
-  root: true,
+  withoutLayout: true,
   path: '/login',
   component: <Login />
 }
