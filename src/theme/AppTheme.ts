@@ -120,17 +120,17 @@ export default createTheme({
   sideMenu: {
     backgroundColor: '#FFF',
     menuItem: {
-      backgroundColor: '#e1e1e1',
-      color: '#333'
+      backgroundColor: '#F2F4F3',
+      color: '#1C211E'
     },
     menuSubItem: {
-      backgroundColor: '#e1e1e1',
-      color: '#333'
+      backgroundColor: '#E4E9E7',
+      color: '1C211E'
     }
   },
   topBar: {
-    backgroundColor: 'red',
-    borderBottomColor: 'none'
+    backgroundColor: '#FFF',
+    borderBottomColor: 'rgba(21, 34, 50, 0.08)'
   }
 })
 

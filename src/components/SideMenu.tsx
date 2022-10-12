@@ -28,14 +28,16 @@ const useStyles = makeStyles(
       },
 
       '&__item': {
-        marginBottom: '5px',
         color: theme.sideMenu?.menuItem?.color,
+        height: 46,
 
         '&-title': {
           display: 'flex',
           boxSizing: 'border-box',
           width: '100%',
-          padding: '10px',
+          height: '100%',
+          alignItems: 'center',
+          padding: '0 15px',
           background: theme.sideMenu?.menuItem?.backgroundColor
         }
       },
@@ -74,7 +76,7 @@ const SideMenu = () => {
 
   const renderMenu = useCallback(() => {
     return menus.map(menu => renderMenuItem(menu))
-  }, [])
+  }, [menus, classes])
 
   const renderMenuItem = useCallback(
     (menu: Menu) => {
@@ -96,7 +98,7 @@ const SideMenu = () => {
         </div>
       )
     },
-    [menus]
+    [classes]
   )
 
   return (
