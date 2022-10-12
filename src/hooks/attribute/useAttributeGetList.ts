@@ -1,18 +1,17 @@
+import { Attribute } from 'models/Attribute'
 import { useCallback, useMemo } from 'react'
 import { useQuery, UseQueryOptions } from 'react-query'
+import { useAttribute } from 'services/api/attribute/useAttribute'
+import { useAttributeFormatter } from 'services/api/attribute/useAttributeFormatter'
+import { ListResponse } from 'services/api/models/ListResponse'
+import { QueryParams } from 'services/api/models/QueryParams'
 
-import { Product } from '../models/Product'
-import { ListResponse } from '../services/api/models/ListResponse'
-import { QueryParams } from '../services/api/models/QueryParams'
-import { useProduct } from '../services/api/product/useProduct'
-import { useProductFormatter } from '../services/api/product/useProductFormatter'
-
-export const useProductGetList = (
-  queryParams?: QueryParams,
+export const useAttributeGetList = (
+  queryParams: QueryParams,
   options?: UseQueryOptions<Response>
 ) => {
-  const { endpoint, getList } = useProduct()
-  const { formatList } = useProductFormatter()
+  const { endpoint, getList } = useAttribute()
+  const { formatList } = useAttributeFormatter()
 
   const queryKey = useMemo(() => [endpoint, queryParams], [endpoint, queryParams])
 
@@ -31,4 +30,4 @@ export const useProductGetList = (
   return query
 }
 
-type Response = ListResponse<Product>
+type Response = ListResponse<Attribute>

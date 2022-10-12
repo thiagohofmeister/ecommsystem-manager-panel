@@ -1,6 +1,6 @@
 import { makeStyles, ThemeOptions } from '@material-ui/core'
 import classNames from 'classnames'
-import { useMenu } from 'hooks/useMenu'
+import menus from 'menus'
 import { Menu } from 'models/Menu'
 import { useCallback } from 'react'
 import { Link } from 'react-router-dom'
@@ -56,7 +56,6 @@ const useStyles = makeStyles(
 const SideMenu = () => {
   const classes = useStyles()
   const { sideMenuOpen, sideMenuRef } = useSideMenu()
-  const { menus } = useMenu()
 
   // const toggleSideMenu = useCallback(() => {
   //   dispatch(setSideMenuOpen(!sideMenuOpen))

@@ -1,10 +1,9 @@
 import cookie from 'js-cookie'
+import { Authentication } from 'models/Authentication'
 import { useCallback, useMemo } from 'react'
 import { useMutation, UseMutationOptions } from 'react-query'
-
-import { Authentication } from '../models/Authentication'
-import { useAuthentication } from '../services/api/authentication/useAuthentication'
-import { useAuthenticationFormatter } from '../services/api/authentication/useAuthenticationFormatter'
+import { useAuthentication } from 'services/api/authentication/useAuthentication'
+import { useAuthenticationFormatter } from 'services/api/authentication/useAuthenticationFormatter'
 
 export const useAuthenticationCreate = (
   options?: UseMutationOptions<Authentication, unknown, TVariables>

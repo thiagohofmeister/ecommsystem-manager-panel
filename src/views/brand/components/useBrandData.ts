@@ -1,4 +1,4 @@
-import { useBrandGetById } from 'hooks/useBrandGetById'
+import { useBrandGetById } from 'hooks/brand/useBrandGetById'
 import { useEditBrandForm, useEditBrandMutation } from 'providers/brand/BrandEditProvider'
 import { useEffect } from 'react'
 

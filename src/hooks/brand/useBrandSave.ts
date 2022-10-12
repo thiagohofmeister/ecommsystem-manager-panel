@@ -1,12 +1,10 @@
 import { toastSuccess } from 'components/Toast/Toast'
-import { update } from 'lodash'
+import { Brand } from 'models/Brand'
 import { useCallback, useMemo } from 'react'
 import { useMutation, UseMutationOptions, useQueryClient } from 'react-query'
+import { useBrand } from 'services/api/brand/useBrand'
+import { useBrandFormatter } from 'services/api/brand/useBrandFormatter'
 import { useBrandParser } from 'services/api/brand/useBrandParser'
-
-import { Brand } from '../models/Brand'
-import { useBrand } from '../services/api/brand/useBrand'
-import { useBrandFormatter } from '../services/api/brand/useBrandFormatter'
 
 export const useBrandSave = (id?: string, options?: UseMutationOptions<Brand, unknown, Brand>) => {
   const queryClient = useQueryClient()

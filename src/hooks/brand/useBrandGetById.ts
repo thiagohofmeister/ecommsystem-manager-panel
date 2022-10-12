@@ -1,9 +1,8 @@
+import { Brand } from 'models/Brand'
 import { useCallback, useMemo } from 'react'
 import { useQuery, UseQueryOptions } from 'react-query'
-
-import { Brand } from '../models/Brand'
-import { useBrand } from '../services/api/brand/useBrand'
-import { useBrandFormatter } from '../services/api/brand/useBrandFormatter'
+import { useBrand } from 'services/api/brand/useBrand'
+import { useBrandFormatter } from 'services/api/brand/useBrandFormatter'
 
 export const useBrandGetById = (
   id: string | undefined,

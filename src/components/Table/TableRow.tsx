@@ -103,7 +103,7 @@ const TableRowComponent: FC<TableRowProps> = <Item extends any>({
   toggleRow
 }: TableRowProps<Item>) => {
   const classes = useStyles()
-  const navigation = useNavigate()
+  const navigate = useNavigate()
   const row = useTableRowContext()
   const { gridTemplateColumns } = useTableContext<Item>()
 
@@ -116,7 +116,7 @@ const TableRowComponent: FC<TableRowProps> = <Item extends any>({
       })}
       onDoubleClick={() => {
         if (row.actions?.EDIT) {
-          return navigation(row.actions.EDIT.link)
+          return navigate(row.actions.EDIT.link)
         }
       }}>
       <TableRowLoader active={row.isLoading} />

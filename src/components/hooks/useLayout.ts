@@ -3,6 +3,7 @@ import jwtDecode from 'jwt-decode'
 import { useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import loginRoute from 'routes/loginRoute'
 
 import { Token } from '../../models/Token'
 import { setLoggedUser } from '../../store/layoutDuck'
@@ -25,7 +26,7 @@ export const useLayout = () => {
       const token = cookie.get('token')
 
       if (!token) {
-        navigate('/login')
+        navigate(loginRoute.path)
         return
       }
 

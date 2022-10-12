@@ -1,40 +1,39 @@
 import { joiResolver } from '@hookform/resolvers/joi'
-import { useBrandGetById } from 'hooks/brand/useBrandGetById'
-import { useBrandSave } from 'hooks/brand/useBrandSave'
+import { useAttributeGetById } from 'hooks/attribute/useAttributeGetById'
+import { useAttributeSave } from 'hooks/attribute/useAttributeSave'
 import Joi from 'joi'
-import { Brand } from 'models/Brand'
+import { Attribute } from 'models/Attribute'
 import { EditProvider } from 'providers/EditProvider'
 import { useMutationContext } from 'providers/MutationProvider'
 import { FC, PropsWithChildren, useState } from 'react'
 import { useForm, useFormContext } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router'
-import brandRoute from 'routes/brandRoute'
+import attributeRoute from 'routes/attributeRoute'
 
-const BrandEditProvider: FC<PropsWithChildren> = ({ children }) => {
+const AttributeEditProvider: FC<PropsWithChildren> = ({ children }) => {
   const { id } = useParams<{ id: string | undefined }>()
   const navigate = useNavigate()
 
-  const [immutableData, setImmutableData] = useState<Brand>({
+  const [immutableData, setImmutableData] = useState<Attribute>({
     id,
     label: '',
-    description: null,
-    urn: ''
+    values: []
   })
 
-  useBrandGetById(id, {
+  useAttributeGetById(id, {
     useErrorBoundary: true,
     onSuccess: setImmutableData
   })
 
-  const mutation = useBrandSave(id, {
+  const mutation = useAttributeSave(id, {
     onSuccess: mutatedData => {
       if (!id && !!mutatedData?.id) {
-        navigate(brandRoute.items.list.path)
+        navigate(attributeRoute.items.list.path)
       }
     }
   })
 
-  const form = useForm<Brand>({
+  const form = useForm<Attribute>({
     defaultValues: immutableData,
     resolver: joiResolver(
       Joi.object({
@@ -42,9 +41,7 @@ const BrandEditProvider: FC<PropsWithChildren> = ({ children }) => {
         label: Joi.string().required().messages({
           'string.empty': 'Campo de preenchimento obrigatório'
         }),
-        description: Joi.string().allow(null, ''),
-        image: Joi.string().allow(null),
-        urn: Joi.string().allow('')
+        values: Joi.array().items(Joi.string().required())
       })
     )
   })
@@ -56,8 +53,8 @@ const BrandEditProvider: FC<PropsWithChildren> = ({ children }) => {
   )
 }
 
-const useEditBrandForm = () => useFormContext<Brand>()
+const useEditAttributeForm = () => useFormContext<Attribute>()
 
-const useEditBrandMutation = () => useMutationContext<Brand, unknown, Brand, unknown>()
+const useEditAttributeMutation = () => useMutationContext<Attribute, unknown, Attribute, unknown>()
 
-export { useEditBrandMutation, useEditBrandForm, BrandEditProvider }
+export { useEditAttributeMutation, useEditAttributeForm, AttributeEditProvider }

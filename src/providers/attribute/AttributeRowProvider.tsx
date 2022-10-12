@@ -1,22 +1,22 @@
 import { Box } from '@material-ui/core'
 import { FC, PropsWithChildren } from 'react'
-import brandRoute from 'routes/brandRoute'
+import attributeRoute from 'routes/attributeRoute'
+import { AttributeGetListResponse } from 'services/api/attribute/models/AttributeGetListResponse'
 import getRouteWithParams from 'utils/getRouteWithParams'
 
-import { BrandGetListResponse } from '../../services/api/brand/models/BrandGetListResponse'
 import { TableRowProvider, TableRowProviderProps } from '../TableRowProvider'
 
-export const BrandRowProvider: FC<BrandRowProviderProps> = ({ children, item }) => {
+export const AttributeRowProvider: FC<AttributeRowProviderProps> = ({ children, item }) => {
   // const { open } = useModal()
-  // const { mutateAsync: deleteBrand, isLoading } = useDeleteBrand()
+  // const { mutateAsync: deleteAttribute, isLoading } = useDeleteAttribute()
 
   // const handleDelete = useCallback(
   //   (id: string) => {
-  //     open(DeleteBrandModal, {
-  //       onDelete: () => deleteBrand(id)
+  //     open(DeleteAttributeModal, {
+  //       onDelete: () => deleteAttribute(id)
   //     })
   //   },
-  //   [open, deleteBrand]
+  //   [open, deleteAttribute]
   // )
 
   return (
@@ -32,14 +32,14 @@ export const BrandRowProvider: FC<BrandRowProviderProps> = ({ children, item }) 
         {
           data: (
             <Box display="flex" alignItems="center" gridGap={15}>
-              <span>{item.urn}</span>
+              <span>{item.values.join(', ')}</span>
             </Box>
           )
         }
       ]}
       actions={{
         EDIT: {
-          link: getRouteWithParams(brandRoute.items.edit.path, { id: item.id })
+          link: getRouteWithParams(attributeRoute.items.edit.path, { id: item.id })
         }
       }}
       isLoading={false}>
@@ -48,4 +48,4 @@ export const BrandRowProvider: FC<BrandRowProviderProps> = ({ children, item }) 
   )
 }
 
-type BrandRowProviderProps = TableRowProviderProps<BrandGetListResponse> & PropsWithChildren
+type AttributeRowProviderProps = TableRowProviderProps<AttributeGetListResponse> & PropsWithChildren
