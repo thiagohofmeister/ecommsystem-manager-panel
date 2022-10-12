@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import BrandList from 'views/BrandList'
 import BrandSave from 'views/BrandSave'
 

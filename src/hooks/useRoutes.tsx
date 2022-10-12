@@ -1,6 +1,6 @@
 import Layout from 'components/Layout'
 import { Route } from 'models/Route'
-import { useCallback, useMemo } from 'react'
+import { lazy, Suspense, useCallback, useMemo } from 'react'
 import { RouteObject, useRoutes as useRoutesRouterDom } from 'react-router-dom'
 import routes from 'routes'
 

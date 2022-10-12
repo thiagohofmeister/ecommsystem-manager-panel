@@ -82,7 +82,7 @@ const SideMenu = () => {
     (menu: Menu) => {
       if (menu.route) {
         return (
-          <div className={`${classes.root}__item`}>
+          <div className={`${classes.root}__item`} key={menu.route}>
             <Link to={menu.route} className={`${classes.root}__item-title`}>
               {menu.title}
             </Link>
@@ -93,7 +93,7 @@ const SideMenu = () => {
       }
 
       return (
-        <div className={`${classes.root}__item`}>
+        <div className={`${classes.root}__item`} key={menu.route}>
           <div className={`${classes.root}__item-title`}>{menu.title}</div>
         </div>
       )

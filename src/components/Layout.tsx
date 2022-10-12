@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core'
 import { Outlet } from 'react-router-dom'
 
+import { ActivityIndicator } from './ActivityIndicator'
 import { useLayout } from './hooks/useLayout'
 import SideMenu from './SideMenu'
 import TopBar from './TopBar'
@@ -21,12 +22,12 @@ const useLayoutStyles = makeStyles(
   { name: 'Layout' }
 )
 
-const Layout: React.FC<any> = props => {
+const Layout: React.FC = () => {
   const classes = useLayoutStyles()
   const { viewLoading } = useLayout()
 
   if (viewLoading) {
-    return <div>Carregando...</div>
+    return <ActivityIndicator />
   }
 
   return (
