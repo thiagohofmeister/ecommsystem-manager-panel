@@ -11,7 +11,7 @@ const BrandSaveForm: React.FC<BrandSaveFormProps> = () => {
   return (
     <FormInputsContainer>
       <FormGroup>
-        <InputContainer label="Label" controller={controllers.label} />
+        <InputContainer label="Label" controller={controllers.label} isRequired />
 
         <InputContainer label="Urn" controller={controllers.urn} />
       </FormGroup>

@@ -77,7 +77,7 @@ const useStyles = makeStyles(
       fontSize: '13px',
       transition: '0.3s all ease',
       left: '11px',
-      color: theme.inputContainer?.labelTitle?.onFocusColor
+      color: theme.inputContainer?.labelTitle?.color
     }
   }),
   {
@@ -134,7 +134,7 @@ const InputContainer: React.FC<InputContainerProps> = ({
           />
         </label>
 
-        {!!suffix && <div className={`${classes.root}__suffix`}>{suffix}</div>}
+        {!!suffix && <div className={`${classes.container}__suffix`}>{suffix}</div>}
       </div>
       {!!error && !hideErrorMessage && <InputErrorMessage error={error!} />}
     </div>

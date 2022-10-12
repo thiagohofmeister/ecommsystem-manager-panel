@@ -103,15 +103,15 @@ export default createTheme({
     }
   },
   inputContainer: {
-    borderColor: '#c1c1c1',
-    requiredColor: 'red',
+    borderColor: '#dfdfdf',
+    requiredColor: '#FF3358',
     labelTitle: {
       color: '#c1c1c1',
-      onFocusColor: 'black'
+      onFocusColor: '#1C211E'
     },
     prefixAndSuffix: {
-      backgroundColor: '#e2e2e2',
-      color: '#999'
+      backgroundColor: '#E4E9E7',
+      color: '#1C211E'
     }
   },
   pageContainer: {
@@ -125,7 +125,7 @@ export default createTheme({
     },
     menuSubItem: {
       backgroundColor: '#E4E9E7',
-      color: '1C211E'
+      color: '#1C211E'
     }
   },
   topBar: {
