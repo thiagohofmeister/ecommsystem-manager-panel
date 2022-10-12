@@ -14,18 +14,29 @@ const useStyles = makeStyles(
       padding: '10px',
       justifyContent: 'center',
 
-      '&--create': {
-        ...theme.button?.create,
-        fontWeight: 'bold'
-      },
+      '&--success': {
+        ...theme.button?.success,
+        fontWeight: 'bold',
 
-      '&--save': {
-        ...theme.button?.save,
-        fontWeight: 'bold'
+        '&:hover': {
+          ...theme.button?.success?.hover
+        },
+
+        '&:active': {
+          ...theme.button?.success?.active
+        }
       },
 
       '&--cancel': {
-        ...theme.button?.cancel
+        ...theme.button?.cancel,
+
+        '&:hover': {
+          ...theme.button?.cancel?.hover
+        },
+
+        '&:active': {
+          ...theme.button?.cancel?.active
+        }
       }
     }
   }),
@@ -49,7 +60,7 @@ const Button: React.FC<ButtonProps> = ({ label, type, ...props }) => {
 }
 
 interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
-  type?: 'save' | 'create' | 'cancel'
+  type?: 'success' | 'cancel'
   label: string
 }
 

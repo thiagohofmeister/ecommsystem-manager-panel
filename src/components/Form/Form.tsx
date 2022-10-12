@@ -45,7 +45,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, btnSubmitLabel, onCancel, ...prop
 
       <div className={`${classes.form}__actions`}>
         {!!onCancel && <Button label="Cancelar" type="cancel" onClick={onCancel} />}
-        <Button label={btnSubmitLabel} type="save" />
+        <Button label={btnSubmitLabel} type="success" />
       </div>
     </form>
   )

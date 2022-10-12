@@ -53,14 +53,14 @@ const Login = () => {
         <InputContainer
           label="Usuário"
           value={user.data}
-          onChange={data => setUser({ ...user, data })}
+          onChange={data => setUser(prev => ({ ...prev, data }))}
         />
 
         <InputContainer
           input={{ type: 'password' }}
           label="Senha"
           value={user.password}
-          onChange={password => setUser({ ...user, password })}
+          onChange={password => setUser(prev => ({ ...prev, password }))}
         />
       </Form>
     </div>

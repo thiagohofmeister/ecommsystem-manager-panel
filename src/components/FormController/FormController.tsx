@@ -26,9 +26,16 @@ export const FormController = ({ controller }: FormControllerProps) => {
 
   return (
     <div className={classes.root}>
-      {hasChanges && <Button label="Desfazer" disabled={isLoading} onClick={discardChanges} />}
+      {hasChanges && (
+        <Button
+          label="Desfazer modificações"
+          type="cancel"
+          disabled={isLoading}
+          onClick={discardChanges}
+        />
+      )}
 
-      <Button label="Salvar" onClick={saveChanges} />
+      <Button label="Salvar" type="success" onClick={saveChanges} />
     </div>
   )
 }

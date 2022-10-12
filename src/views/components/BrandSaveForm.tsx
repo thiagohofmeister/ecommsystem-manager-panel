@@ -1,19 +1,15 @@
-import { FormControllerDefault } from 'components/FormController/FormController'
 import FormGroup from 'components/FormGroup'
+import FormInputsContainer from 'components/FormInputsContainer'
 import InputContainer from 'components/InputContainer'
 import TextAreaContainer from 'components/TextAreaContainer'
-import { useCallback, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { useBrandData } from './brand/useBrandData'
 
-const BrandSaveForm: React.FC<BrandSaveFormProps> = ({ id }) => {
-  const navigation = useNavigate()
-
+const BrandSaveForm: React.FC<BrandSaveFormProps> = () => {
   const { controllers } = useBrandData()
 
   return (
-    <div>
+    <FormInputsContainer>
       <FormGroup>
         <InputContainer label="Label" controller={controllers.label} />
 
@@ -21,9 +17,7 @@ const BrandSaveForm: React.FC<BrandSaveFormProps> = ({ id }) => {
       </FormGroup>
 
       <TextAreaContainer label="Descrição" controller={controllers.description} />
-
-      <FormControllerDefault />
-    </div>
+    </FormInputsContainer>
   )
 }
 

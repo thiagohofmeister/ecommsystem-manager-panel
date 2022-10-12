@@ -1,9 +1,10 @@
+import PageContainer from 'components/PageContainer'
+import PageContainerTopRight from 'components/PageContainerTopRight'
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Button from '../components/Button'
 import List from '../components/List'
-import PageTitle from '../components/PageTitle'
 import { useBrandGetList } from '../hooks/useBrandGetList'
 import { BrandTableProvider } from '../providers/brand/BrandTableProvider'
 
@@ -15,18 +16,13 @@ export const BrandList = () => {
   }, [navigation])
 
   return (
-    <div className="list-brand">
-      <PageTitle title="Listagem de marcas">
-        <Button
-          label="Cadastrar marcas"
-          type="create"
-          className="list-brand__add"
-          onClick={handleAddBrand}
-        />
-      </PageTitle>
+    <PageContainer pageTitle="Listagem de marcas">
+      <PageContainerTopRight>
+        <Button label="Criar marca" type="success" onClick={handleAddBrand} />
+      </PageContainerTopRight>
 
       <List query={useBrandGetList} tableProvider={BrandTableProvider} />
-    </div>
+    </PageContainer>
   )
 }
 

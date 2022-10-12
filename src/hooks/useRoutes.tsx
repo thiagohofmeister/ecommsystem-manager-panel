@@ -1,33 +1,35 @@
-import { useMemo } from 'react'
+import Layout from 'components/Layout'
+import { Route } from 'models/Route'
+import { useCallback, useMemo } from 'react'
 import { RouteObject, useRoutes as useRoutesRouterDom } from 'react-router-dom'
-
-import Layout from '../components/Layout'
-import BrandList from '../views/BrandList'
-import BrandSave from '../views/BrandSave'
-import Dashboard from '../views/Dashboard'
-import Login from '../views/Login'
+import routes from 'routes'
 
 export const useRoutes = () => {
-  const routes = useMemo<RouteObject[]>(() => {
-    return [
-      {
-        path: '/',
-        element: <Layout />,
-        children: [
-          { index: true, element: <Dashboard /> },
-          { path: '/brand/create', element: <BrandSave /> },
-          { path: '/brand/edit/:id', element: <BrandSave /> },
-          { path: '/brand/list', element: <BrandList /> }
-        ]
-      },
-      {
-        path: '/login',
-        element: <Login />
-      }
-    ]
+  const formatRoute = useCallback((route: Route): RouteObject => {
+    const routeObject: RouteObject = {
+      index: route.index,
+      path: route.path,
+      element: route.component,
+      children:
+        route.items && Object.keys(route.items).map(routeKey => formatRoute(route.items![routeKey]))
+    }
+
+    return routeObject
   }, [])
 
-  const router = useRoutesRouterDom(routes)
+  const routesToRouterDom = useMemo<RouteObject[]>(() => {
+    return [
+      {
+        label: 'Layout',
+        path: '/',
+        element: <Layout />,
+        children: Object.keys(routes).map(routeKey => formatRoute(routes![routeKey]))
+      },
+      ...Object.keys(routes).map(routeKey => formatRoute(routes![routeKey]))
+    ]
+  }, [routes])
+
+  const router = useRoutesRouterDom(routesToRouterDom)
 
   return {
     router

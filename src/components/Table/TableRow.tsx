@@ -32,7 +32,7 @@ const useStyles = makeStyles(
       },
 
       '&--selected': {
-        backgroundColor: theme.table?.body?.row?.selectedBackgroundColor || '#f2f4f3'
+        backgroundColor: theme.table?.body?.row?.selectedBackgroundColor
       },
 
       '&--has-click': {
@@ -40,10 +40,10 @@ const useStyles = makeStyles(
       },
 
       '&--disabled': {
-        backgroundColor: theme.table?.body?.row?.disabledBackgroundColor || '#f2f4f3',
+        backgroundColor: theme.table?.body?.row?.disabledBackgroundColor,
 
         '& div': {
-          color: theme.table?.body?.row?.disabledColor || '#a2a3a2'
+          color: theme.table?.body?.row?.disabledColor
         }
       },
 
@@ -88,7 +88,7 @@ const useStyles = makeStyles(
         top: '25px',
         right: '-5px',
         background: '#ffffff',
-        border: '1px solid #ccc',
+        border: '1px solid #dfdfdf',
         padding: '15px',
         borderRadius: '6px',
         zIndex: '1'

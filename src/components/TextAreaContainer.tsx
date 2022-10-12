@@ -18,7 +18,7 @@ const useStyles = makeStyles(
       width: '100%',
       display: 'flex',
       height: '130px',
-      border: `1px solid ${theme.textAreaContainer?.borderColor}`,
+      border: `1px solid ${theme.inputContainer?.borderColor}`,
       alignItems: 'center',
       overflow: 'hidden',
       borderRadius: '3px',
@@ -35,7 +35,7 @@ const useStyles = makeStyles(
       },
 
       '& span': {
-        color: theme.textAreaContainer?.requiredColor,
+        color: theme.inputContainer?.requiredColor,
         marginLeft: '3px',
         fontSize: '13px'
       },
@@ -49,7 +49,7 @@ const useStyles = makeStyles(
 
       '&:focus-within, &--with-value': {
         '& $labelTitle': {
-          color: theme.textAreaContainer?.labelTitle?.onFocusColor,
+          color: theme.inputContainer?.labelTitle?.onFocusColor,
           fontWeight: 'bold',
           fontSize: '9px',
           top: '5px'
@@ -69,7 +69,7 @@ const useStyles = makeStyles(
       fontSize: '13px',
       transition: '0.3s all ease',
       left: '11px',
-      color: theme.textAreaContainer?.labelTitle?.color
+      color: theme.inputContainer?.labelTitle?.color
     }
   }),
   {

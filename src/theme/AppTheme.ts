@@ -46,18 +46,21 @@ export default createTheme({
       }
     }
   },
-  activityIndicatorBackgroundColor: 'blue',
+  activityIndicatorBackgroundColor: 'gray',
   table: {
+    header: {
+      backgroundColor: '#f2f4f3'
+    },
     body: {
       column: {
-        color: 'red'
+        color: '#666'
       },
       row: {
-        borderBottomColor: 'red',
-        hoverBackgroundColor: 'blue',
-        selectedBackgroundColor: 'gray',
-        disabledBackgroundColor: 'gray',
-        disabledColor: 'darkgray'
+        borderBottomColor: '#dfdfdf',
+        hoverBackgroundColor: '#f2f4f3',
+        selectedBackgroundColor: '#f2f4f3',
+        disabledBackgroundColor: '#f2f4f3',
+        disabledColor: '#a2a3a2'
       }
     }
   },
@@ -84,17 +87,19 @@ export default createTheme({
     }
   },
   button: {
-    save: {
-      backgroundColor: 'green',
-      color: 'white'
-    },
-    create: {
-      backgroundColor: 'green',
-      color: 'white'
+    success: {
+      backgroundColor: '#0CAC6E',
+      color: 'white',
+      hover: {
+        backgroundColor: '#098757'
+      },
+      active: {
+        backgroundColor: '#0DBD79'
+      }
     },
     cancel: {
       backgroundColor: 'none',
-      color: 'red'
+      color: '#FF3358'
     }
   },
   inputContainer: {
@@ -109,24 +114,11 @@ export default createTheme({
       color: '#999'
     }
   },
-  textAreaContainer: {
-    borderColor: '#c1c1c1',
-    requiredColor: 'red',
-    labelTitle: {
-      color: '#c1c1c1',
-      onFocusColor: 'black'
-    },
-    prefixAndSuffix: {
-      backgroundColor: '#e2e2e2',
-      color: '#999'
-    }
-  },
-  pageTitle: {
-    h1Color: '#333'
+  pageContainer: {
+    titleColor: '#333'
   },
   sideMenu: {
     backgroundColor: '#FFF',
-    borderRightColor: 'rgba(21, 34, 50, 0.8)',
     menuItem: {
       backgroundColor: '#e1e1e1',
       color: '#333'
@@ -198,17 +190,29 @@ declare module '@material-ui/core/styles/createTheme' {
       }
     }
     button?: {
-      save?: {
+      success?: {
         backgroundColor?: React.CSSProperties['backgroundColor']
         color?: React.CSSProperties['color']
-      }
-      create?: {
-        backgroundColor?: React.CSSProperties['backgroundColor']
-        color?: React.CSSProperties['color']
+        hover?: {
+          backgroundColor?: React.CSSProperties['backgroundColor']
+          color?: React.CSSProperties['color']
+        }
+        active?: {
+          backgroundColor?: React.CSSProperties['backgroundColor']
+          color?: React.CSSProperties['color']
+        }
       }
       cancel?: {
         backgroundColor?: React.CSSProperties['backgroundColor']
         color?: React.CSSProperties['color']
+        hover?: {
+          backgroundColor?: React.CSSProperties['backgroundColor']
+          color?: React.CSSProperties['color']
+        }
+        active?: {
+          backgroundColor?: React.CSSProperties['backgroundColor']
+          color?: React.CSSProperties['color']
+        }
       }
     }
     inputContainer?: {
@@ -223,24 +227,11 @@ declare module '@material-ui/core/styles/createTheme' {
         color?: React.CSSProperties['color']
       }
     }
-    textAreaContainer?: {
-      borderColor?: React.CSSProperties['borderColor']
-      requiredColor?: React.CSSProperties['color']
-      labelTitle?: {
-        color: React.CSSProperties['color']
-        onFocusColor: React.CSSProperties['color']
-      }
-      prefixAndSuffix?: {
-        backgroundColor?: React.CSSProperties['backgroundColor']
-        color?: React.CSSProperties['color']
-      }
-    }
-    pageTitle?: {
-      h1Color?: React.CSSProperties['color']
+    pageContainer?: {
+      titleColor?: React.CSSProperties['color']
     }
     sideMenu?: {
       backgroundColor?: React.CSSProperties['backgroundColor']
-      borderRightColor?: React.CSSProperties['borderRightColor']
       menuItem?: {
         backgroundColor?: React.CSSProperties['backgroundColor']
         color?: React.CSSProperties['color']

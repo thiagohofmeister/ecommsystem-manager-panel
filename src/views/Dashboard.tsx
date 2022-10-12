@@ -1,11 +1,7 @@
-import PageTitle from '../components/PageTitle'
+import PageContainer from 'components/PageContainer'
 
 const Dashboard = () => {
-  return (
-    <div className="dashboard">
-      <PageTitle title="Dashboard" />
-    </div>
-  )
+  return <PageContainer pageTitle="Dashboard"></PageContainer>
 }
 
 export default Dashboard

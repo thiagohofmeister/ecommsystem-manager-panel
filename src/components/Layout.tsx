@@ -1,14 +1,15 @@
 import { makeStyles } from '@material-ui/core'
+import { Outlet } from 'react-router-dom'
 
 import { useLayout } from './hooks/useLayout'
-import PageContainer from './PageContainer'
 import SideMenu from './SideMenu'
 import TopBar from './TopBar'
 
-const useStyles = makeStyles(
+const useLayoutStyles = makeStyles(
   {
     root: {
       overflow: 'hidden',
+      height: '100%',
 
       '&__container': {
         width: '100%',
@@ -21,7 +22,7 @@ const useStyles = makeStyles(
 )
 
 const Layout: React.FC<any> = props => {
-  const classes = useStyles()
+  const classes = useLayoutStyles()
   const { viewLoading } = useLayout()
 
   if (viewLoading) {
@@ -35,7 +36,7 @@ const Layout: React.FC<any> = props => {
       <div className={`${classes.root}__container`}>
         <SideMenu />
 
-        <PageContainer />
+        <Outlet />
       </div>
     </div>
   )
