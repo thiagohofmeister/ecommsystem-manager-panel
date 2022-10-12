@@ -39,7 +39,7 @@ const PageContainer: React.FC<PageContainerProps> = ({ pageTitle, backRoute, chi
       })}>
       <PageContainerTop title={pageTitle} backRoute={backRoute} />
 
-      <div className={classes.body}>{children}</div>
+      {children && <div className={classes.body}>{children}</div>}
     </div>
   )
 }
