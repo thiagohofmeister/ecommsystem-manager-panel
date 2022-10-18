@@ -21,6 +21,11 @@ export const useLayout = () => {
     [dispatch]
   )
 
+  const logout = useCallback(() => {
+    cookie.remove('token')
+    navigate(loginRoute.path)
+  }, [navigate])
+
   useEffect(() => {
     ;(async () => {
       const token = cookie.get('token')
@@ -34,7 +39,7 @@ export const useLayout = () => {
 
       setViewLoading(false)
     })()
-  }, [setUser])
+  }, [setUser, navigate])
 
-  return { viewLoading }
+  return { viewLoading, logout }
 }

@@ -1,7 +1,8 @@
 import { makeStyles, ThemeOptions } from '@material-ui/core'
 import MoreVertSharpIcon from '@material-ui/icons/MoreVertSharp'
 import classNames from 'classnames'
-import { FC } from 'react'
+import Dropdown from 'components/Dropdown'
+import { FC, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useTableContext } from '../../providers/TableProvider'
@@ -59,40 +60,7 @@ const useStyles = makeStyles(
       height: '100%',
       display: 'none',
       transition: '0.3s',
-      cursor: 'pointer',
-
-      '& > *': {
-        '&:not(:first-child)': {
-          marginLeft: '5px'
-        }
-      },
-
-      '&-icon': {
-        position: 'relative',
-        opacity: '0.5'
-      },
-
-      '&:hover &-dropdown': {
-        display: 'flex'
-      },
-
-      '&:hover &-icon': {
-        opacity: '1'
-      },
-
-      '&-dropdown': {
-        display: 'none',
-        position: 'absolute',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        top: '25px',
-        right: '-5px',
-        background: '#ffffff',
-        border: '1px solid #dfdfdf',
-        padding: '15px',
-        borderRadius: '6px',
-        zIndex: '1'
-      }
+      cursor: 'pointer'
     }
   }),
   { name: 'TableRow' }
@@ -131,14 +99,11 @@ const TableRowComponent: FC<TableRowProps> = <Item extends any>({
 
         {row.actions && (
           <div className={classes.tableRowActions}>
-            <div className={`${classes.tableRowActions}__icon`}>
-              <MoreVertSharpIcon fontSize="inherit" />
-              <div className={`${classes.tableRowActions}-dropdown`}>
-                {(Object.keys(row.actions) as TableRowActionType[]).map(actionType => (
-                  <TableRowAction key={actionType} actionType={actionType} actions={row.actions!} />
-                ))}
-              </div>
-            </div>
+            <Dropdown openByHover icon={<MoreVertSharpIcon />}>
+              {(Object.keys(row.actions) as TableRowActionType[]).map(actionType => (
+                <TableRowAction key={actionType} actionType={actionType} actions={row.actions!} />
+              ))}
+            </Dropdown>
           </div>
         )}
       </div>

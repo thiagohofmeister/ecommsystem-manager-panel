@@ -9,7 +9,7 @@ const PageContainerTopRight: React.FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     setRef(document.querySelector(`.${classesPageContainerTop.right}`))
-  }, [])
+  }, [classesPageContainerTop])
 
   return ref ? ReactDOM.createPortal(children, ref) : <></>
 }

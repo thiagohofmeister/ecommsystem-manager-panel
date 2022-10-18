@@ -1,3 +1,4 @@
+import { useSelector } from 'hooks/useSelector'
 import { Reducer } from 'react'
 import { useDispatch } from 'react-redux'
 import { Action, bindActionCreators, Dispatch } from 'redux'
@@ -51,7 +52,8 @@ export const reducer: Reducer<ILayoutState, ILayoutAction> = (
   }
 }
 
-export const useLayoutDuck = () => {
+export const useLayoutState = () => useSelector<ILayoutState>('layout')
+export const useLayoutActions = () => {
   const layoutActions = bindActionCreators(actions, useDispatch<LayoutDispatch>())
 
   return {
@@ -59,7 +61,7 @@ export const useLayoutDuck = () => {
   }
 }
 
-export interface ILayoutState {
+interface ILayoutState {
   sideMenuOpen: boolean
   loggedUser: Token | null
 }

@@ -22,7 +22,7 @@ export const useBrandSave = (id?: string, options?: UseMutationOptions<Brand, un
 
       return format(await create(parseCreate(brand)))
     },
-    [create, format]
+    [id, create, update, format, parseUpdate, parseCreate]
   )
 
   const mutation = useMutation<Brand, unknown, Brand>(mutationKey, mutationFn, {
