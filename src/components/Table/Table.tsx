@@ -1,8 +1,8 @@
 import { makeStyles, ThemeOptions } from '@material-ui/core'
 import classNames from 'classnames'
+import { TableProviderProps, TableProviderType, useTableContext } from 'providers/TableProvider'
 import { useCallback, useState } from 'react'
 
-import { TableProviderProps, TableProviderType, useTableContext } from '../../providers/TableProvider'
 import { ActivityIndicator } from '../ActivityIndicator'
 import { PanelMessage } from '../PanelMessage'
 import { TableRow } from './TableRow'

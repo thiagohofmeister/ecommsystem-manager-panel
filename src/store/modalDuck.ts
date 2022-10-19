@@ -1,8 +1,7 @@
+import { useSelector } from 'hooks/useSelector'
 import { Reducer } from 'react'
 import { useDispatch } from 'react-redux'
 import { ThunkDispatch } from 'redux-thunk'
-
-import { useSelector } from '../hooks/useSelector'
 
 const INITIAL_STATE: IModalState = {
   active: false

@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react'
+import { BrandGetListResponse } from 'services/api/brand/models/BrandGetListResponse'
 
-import { BrandGetListResponse } from '../../services/api/brand/models/BrandGetListResponse'
 import { TableProvider, TableProviderProps } from '../TableProvider'
 import { BrandRowProvider } from './BrandRowProvider'
 

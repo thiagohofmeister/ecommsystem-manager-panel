@@ -1,6 +1,6 @@
+import { withModal } from 'hocs/withModal/withModal'
 import { Fragment, useCallback, useMemo } from 'react'
 
-import { withModal } from '../hocs/withModal/withModal'
 import Button from './Button'
 
 export const ConfirmationModal = withModal<ConfirmationModalProps>(

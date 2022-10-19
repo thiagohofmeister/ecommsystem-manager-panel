@@ -1,9 +1,9 @@
 import { Box } from '@material-ui/core'
 import { FC, PropsWithChildren } from 'react'
 import brandRoute from 'routes/brandRoute'
+import { BrandGetListResponse } from 'services/api/brand/models/BrandGetListResponse'
 import getRouteWithParams from 'utils/getRouteWithParams'
 
-import { BrandGetListResponse } from '../../services/api/brand/models/BrandGetListResponse'
 import { TableRowProvider, TableRowProviderProps } from '../TableRowProvider'
 
 export const BrandRowProvider: FC<BrandRowProviderProps> = ({ children, item }) => {

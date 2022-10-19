@@ -1,7 +1,7 @@
 import { makeStyles, Theme } from '@material-ui/core'
 import { useCallback } from 'react'
+import { useModalActions } from 'store/modalDuck'
 
-import { useModalActions } from '../../store/modalDuck'
 import { WithModalStyledProps } from './withModal'
 
 const useStyles = makeStyles<

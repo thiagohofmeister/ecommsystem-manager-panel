@@ -1,9 +1,9 @@
 import { useSelector } from 'hooks/useSelector'
+import { Store } from 'models/Store'
+import { User } from 'models/User'
 import { Reducer } from 'react'
 import { useDispatch } from 'react-redux'
 import { Action, bindActionCreators, Dispatch } from 'redux'
-
-import { Token } from '../models/Token'
 
 const INITIAL_STATE: ILayoutState = {
   sideMenuOpen: true,
@@ -20,7 +20,12 @@ export const setSideMenuOpen = (payload: boolean) => ({
   payload
 })
 
-export const setLoggedUser = (payload: Token) => ({
+export const setLoggedUser = (payload: User) => ({
+  type: LayoutTypes.SET_LOGGED_USER,
+  payload
+})
+
+export const setCurrentStore = (payload: Store) => ({
   type: LayoutTypes.SET_LOGGED_USER,
   payload
 })
@@ -63,11 +68,11 @@ export const useLayoutActions = () => {
 
 interface ILayoutState {
   sideMenuOpen: boolean
-  loggedUser: Token | null
+  loggedUser: User | null
 }
 
 type ILayoutAction =
   | { type: LayoutTypes.SET_SIDE_MENU_OPEN; payload: boolean }
-  | { type: LayoutTypes.SET_LOGGED_USER; payload: Token | null }
+  | { type: LayoutTypes.SET_LOGGED_USER; payload: User | null }
 
 type LayoutDispatch = Dispatch<Partial<ILayoutState> & Action<LayoutTypes>>

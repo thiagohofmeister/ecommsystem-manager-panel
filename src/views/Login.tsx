@@ -1,9 +1,8 @@
 import { makeStyles } from '@material-ui/core'
+import Form from 'components/Form/Form'
+import InputContainer from 'components/InputContainer'
+import { useAuthenticationCreate } from 'hooks/authentication/useAuthenticationCreate'
 import { useCallback, useState } from 'react'
-
-import Form from '../components/Form/Form'
-import InputContainer from '../components/InputContainer'
-import { useAuthenticationCreate } from '../hooks/authentication/useAuthenticationCreate'
 
 const useStyles = makeStyles(
   {

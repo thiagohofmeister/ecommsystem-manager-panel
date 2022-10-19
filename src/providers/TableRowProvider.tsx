@@ -1,8 +1,7 @@
+import { IListColumn } from 'components/List'
+import { RowAction } from 'components/Table/TableRow'
 import { createContext, FC, PropsWithChildren, useContext } from 'react'
 import { useErrorHandler } from 'react-error-boundary'
-
-import { IListColumn } from '../components/List'
-import { RowAction } from '../components/Table/TableRow'
 
 export type TableRowProviderProps<Item = any> = {
   item: Item

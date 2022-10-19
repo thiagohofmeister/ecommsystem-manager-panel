@@ -1,6 +1,5 @@
+import { DefaultInputProps } from 'components/BaseInput'
 import { useMemo } from 'react'
-
-import { DefaultInputProps } from '../components/BaseInput'
 
 export const useInputModel = <Value, OnChange, Props>(
   props: InputModelProps<Value, OnChange> & Props

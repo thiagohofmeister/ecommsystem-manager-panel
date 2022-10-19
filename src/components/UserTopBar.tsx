@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core'
-import { useRef } from 'react'
 import { useLayoutState } from 'store/layoutDuck'
 
 import Button from './Button'
@@ -21,7 +20,7 @@ const UserTopBar = () => {
 
   return (
     <div className={classes.root}>
-      <Dropdown label={<>{loggedUser?.user.name}</>}>
+      <Dropdown label={<>{loggedUser?.name}</>}>
         <Button label="Sair" type="cancel" onClick={logout} />
       </Dropdown>
     </div>

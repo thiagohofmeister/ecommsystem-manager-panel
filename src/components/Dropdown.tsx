@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core'
 import { ExpandMore } from '@material-ui/icons'
 import { ExpandLess } from '@mui/icons-material'
 import classNames from 'classnames'
-import { PropsWithChildren, useCallback, useEffect, useRef, useState } from 'react'
+import { PropsWithChildren, useCallback, useState } from 'react'
 
 export const useDropdownStyles = makeStyles(
   {

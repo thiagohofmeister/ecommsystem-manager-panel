@@ -1,10 +1,9 @@
+import { useSelector } from 'hooks/useSelector'
 import { Reducer } from 'react'
 import { useDispatch } from 'react-redux'
 import { Action, Dispatch } from 'redux'
-
-import { useSelector } from '../hooks/useSelector'
-import { DefaultQueryParams } from '../services/api/models/QueryParams'
-import { QueryParamsFilter } from '../services/api/models/QueryParamsFilter'
+import { DefaultQueryParams } from 'services/api/models/QueryParams'
+import { QueryParamsFilter } from 'services/api/models/QueryParamsFilter'
 
 const INITIAL_STATE: IListState = {
   filters: {},

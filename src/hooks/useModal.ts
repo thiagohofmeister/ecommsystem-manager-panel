@@ -1,6 +1,5 @@
 import { FC, useCallback } from 'react'
-
-import { useModalActions } from '../store/modalDuck'
+import { useModalActions } from 'store/modalDuck'
 
 export const useModal = () => {
   const { dispatch, modalActions } = useModalActions()

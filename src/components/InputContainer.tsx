@@ -1,9 +1,9 @@
 import { makeStyles, ThemeOptions } from '@material-ui/core'
 import classNames from 'classnames'
+import { useInputModel } from 'hooks/useInputModel'
 import { HTMLProps, useMemo } from 'react'
 import { FieldError, UseControllerReturn } from 'react-hook-form'
 
-import { useInputModel } from '../hooks/useInputModel'
 import { InputErrorMessage } from './InputErrorMessage'
 
 const useStyles = makeStyles(

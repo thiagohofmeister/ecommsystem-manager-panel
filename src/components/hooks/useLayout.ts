@@ -1,24 +1,27 @@
+import { useUserLogged } from 'hooks/user/useUserLogged'
 import cookie from 'js-cookie'
 import jwtDecode from 'jwt-decode'
+import { Token } from 'models/Token'
 import { useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import loginRoute from 'routes/loginRoute'
-
-import { Token } from '../../models/Token'
-import { setLoggedUser } from '../../store/layoutDuck'
+import { setCurrentStore, setLoggedUser } from 'store/layoutDuck'
 
 export const useLayout = () => {
   const [viewLoading, setViewLoading] = useState<boolean>(true)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { data: loggedUser } = useUserLogged()
 
   const setUser = useCallback(
     (token: string) => {
       const decodedToken: Token = jwtDecode<Token>(token)
-      dispatch(setLoggedUser(decodedToken))
+      dispatch(setCurrentStore(decodedToken?.store))
+
+      if (loggedUser) dispatch(setLoggedUser(loggedUser))
     },
-    [dispatch]
+    [dispatch, loggedUser]
   )
 
   const logout = useCallback(() => {

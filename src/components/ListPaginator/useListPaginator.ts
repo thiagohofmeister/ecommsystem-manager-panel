@@ -1,6 +1,5 @@
-import { useMemo, useState } from 'react'
-
-import { useListState } from '../../store/listDuck'
+import { useState } from 'react'
+import { useListState } from 'store/listDuck'
 
 export const useListPaginator = () => {
   const listState = useListState()

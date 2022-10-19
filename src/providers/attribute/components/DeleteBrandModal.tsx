@@ -1,5 +1,5 @@
-import { DeleteModal } from '../../../components/DeleteModal'
-import { ModalPositionType } from '../../../store/modalDuck'
+import { DeleteModal } from 'components/DeleteModal'
+import { ModalPositionType } from 'store/modalDuck'
 
 export const DeleteBrandModal = ({ onDelete, position }: DeleteBrandModalProps) => {
   return (

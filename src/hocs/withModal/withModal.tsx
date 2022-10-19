@@ -1,7 +1,7 @@
 import { Box, BoxProps } from '@material-ui/core'
 import { FC, useCallback } from 'react'
+import { ModalPositionType } from 'store/modalDuck'
 
-import { ModalPositionType } from '../../store/modalDuck'
 import { useWithModal } from './useWithModal'
 
 export const withModal =
